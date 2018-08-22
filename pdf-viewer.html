@@ -293,10 +293,13 @@ a pdf viewer component
           return
         }
 
+        console.log('will load %s', src);
         this.PDFJS.getDocument(src)
           .then(pdf => {
+            console.log('got pdf');
             if (src !== this.src) {
               // fake cancel
+              console.log('fake cancel');
               return
             }
             this._loaded = true
