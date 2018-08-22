@@ -293,10 +293,8 @@ a pdf viewer component
           return
         }
 
-        console.log('will load %s', src);
         this.PDFJS.getDocument(src)
           .then(pdf => {
-            console.log('got pdf');
             if (src !== this.src) {
               // fake cancel
               console.log('fake cancel');
@@ -397,7 +395,7 @@ a pdf viewer component
             let viewport = page.getViewport(1)
             let rect = this.$.container.getBoundingClientRect()
             const zoom = (rect.width - 20) / (this._views * viewport.width)
-            if (zoom === this._zoom) { return Promise.resolve() }
+            // if (zoom === this._zoom) { return Promise.resolve() }
             this._zoom = zoom
             this._drawPage()
           })
@@ -413,7 +411,7 @@ a pdf viewer component
             let viewport = page.getViewport(1)
             let rect = this.$.container.getBoundingClientRect()
             const zoom = Math.min((rect.width - 20) / (this._views * viewport.width), (rect.height - 20) / viewport.height)
-            if (zoom === this._zoom) { return Promise.resolve() }
+            // if (zoom === this._zoom) { return Promise.resolve() }
             this._zoom = zoom
             this.page = pageNum
             this._drawPage()
