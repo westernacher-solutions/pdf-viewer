@@ -453,6 +453,7 @@ a pdf viewer component
               resolve(page.render(renderContext))
             })
             .catch((e) => {
+              console.log('error in _renderView', e);
               const context = view.getContext('2d')
               context.clearRect(0, 0, view.width, view.height)
               resolve()
@@ -499,6 +500,7 @@ a pdf viewer component
             const event = new CustomEvent('pdf-viewer-render', { detail: { page: this.page } })
             this.dispatchEvent(event)
           })
+          .catch(error => console.log('error in _drawPage', error));
       }
 
       _handleTrack(evt) {
